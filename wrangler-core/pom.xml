@@ -358,6 +358,32 @@
           </items>
         </configuration>
       </plugin>
+      <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.10</version>
+      <configuration>
+        <excludes>
+          <!-- Resource and data files -->
+          <exclude>**/*.properties</exclude>
+          <exclude>**/*.txt</exclude>
+          <exclude>**/*.json</exclude>
+          <exclude>**/*.xml</exclude>
+
+          <!-- Specific files -->
+          <exclude>src/main/resources/.properties</exclude>
+          <exclude>src/main/resources/DateRegexesGrouped.txt</exclude>
+          <exclude>src/main/resources/icd-10-2016_cm_codes.txt</exclude>
+          <exclude>src/main/resources/icd-10-2017_cm_codes.txt</exclude>
+          <exclude>src/main/resources/icd-9_cm_codes.txt</exclude>
+          <exclude>src/main/resources/reserved-column-names.txt</exclude>
+          <exclude>src/main/resources/TimeRegexes.txt</exclude>
+          <exclude>src/main/resources/user/messages_en.properties</exclude>
+          <exclude>src/main/resources/wrangler-finder.xml</exclude>
+          <exclude>src/main/resources/schemas/**</exclude>
+        </excludes>
+      </configuration>
+    </plugin>
     </plugins>
   </build>
 

@@ -1,0 +1,27 @@
+# AI Tool Usage Log for SWE Intern Assignment – Wrangler Enhancement
+
+1. Prompt: "How to parse and convert values like '10KB' or '2s' into bytes and milliseconds in Java?"
+   → Used to implement ByteSize.java and TimeDuration.java classes.
+
+2. Prompt: "How to write JUnit tests for parsing custom tokens in Java?"
+   → Used to create unit tests for ByteSize and TimeDuration.
+
+3. Prompt: "How to use TestingRig to validate custom directives in Wrangler?"
+   → Used to write AggregateStatsDirectiveTest with mock data and expected results.
+
+4. Prompt: "How to create RecipeCompilerTest.java to test new directive parsing?"
+   → Used to confirm that the recipe is parsed correctly with the new syntax.
+
+5. Prompt: "What does 'no interface expected here' mean in Java?"
+   → Used to resolve interface implementation issues while extending Token.
+
+6. Prompt: "How to satisfy Apache Checkstyle rules like Javadoc and line length?"
+   → Used to ensure formatting and class documentation met required standards.
+
+7. Prompt: "How to resolve 'illegal character: \u0325' in Java compilation?"
+   → Helped clean up hidden characters from the source file during build errors.
+
+8. Prompt: "Final checklist for submitting a Java Maven-based SWE assignment?"
+   → Used to confirm proper README.md, prompts.txt, and git commit structure.
+
+Note: All AI tool usage was limited to code guidance, formatting assistance, and resolving Maven build errors. Final implementation, debugging, and test writing were completed independently.

@@ -41,6 +41,7 @@ options {
 /**
  * Parser Grammar for recognizing tokens and constructs of the directives language.
  */
+ 
 recipe
  : statements EOF
  ;
@@ -140,7 +141,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | Identifier | BYTE_SIZE | TIME_DURATION
  ;
 
 ecommand
@@ -311,3 +312,12 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
+
+// Fragment rules for reuse
+fragment DIGITS: [0-9]+;
+fragment BYTE_UNIT: ('B' | 'KB' | 'MB' | 'GB' | 'TB');
+fragment TIME_UNIT: ('ms' | 's' | 'min' | 'h');
+
+// Token rules
+BYTE_SIZE: DIGITS BYTE_UNIT;
+TIME_DURATION: DIGITS TIME_UNIT;

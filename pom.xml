@@ -123,6 +123,8 @@
     <slf4j.version>1.7.15</slf4j.version>
     <unix4j.version>0.4</unix4j.version>
     <testSourceLocation>${project.basedir}/src/test/java/</testSourceLocation>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <repositories>

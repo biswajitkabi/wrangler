@@ -216,3 +216,103 @@ Cask is a trademark of Cask Data, Inc. All rights reserved.
 
 Apache, Apache HBase, and HBase are trademarks of The Apache Software Foundation. Used with
 permission. No endorsement by The Apache Software Foundation is implied by the use of these marks.
+
+
+
+# Below is the detailed overview of changes made by Biswaajit Kabi as part of the Software Engineer Intern Assignment.
+
+## Wrangler Enhancement: BYTE_SIZE, TIME_DURATION Support & aggregate-stats Directive
+
+Support for parsing and processing BYTE_SIZE and TIME_DURATION literals in recipes.
+
+A new directive: aggregate-stats to perform aggregation operations over byte and time columns across rows.
+
+✅ Features Added
+1. Grammar Extension
+Modified Directives.g4 to support:
+
+ByteSizeArg → e.g., 10MB, 512KB
+
+TimeDurationArg → e.g., 5s, 3m, 1h
+
+2. Token Classes
+Introduced two new token classes in wrangler-api:
+
+ByteSize.java
+
+TimeDuration.java
+
+These implement RowValue and store raw values for use in directives.
+
+3. Parser Visitor Enhancements
+Added support in RecipeSymbolBuildingVisitor to identify and convert:
+
+ByteSizeArgContext → ByteSize
+
+TimeDurationArgContext → TimeDuration
+
+Ensures tokens are added to the correct TokenGroup.
+
+4. New Directive: aggregate-stats
+Path: wrangler-core/src/main/java/io/cdap/wrangler/parser/AggregateStats.java
+
+Arguments:
+
+sourceByteCol: column containing byte size strings
+
+sourceTimeCol: column containing duration strings
+
+targetSizeCol: output column for total bytes
+
+targetTimeCol: output column for total duration
+
+Uses ExecutorContext store to accumulate totals across rows.
+
+🧪 Example Usage
+🧾 Recipe
+wrangler
+Copy
+Edit
+aggregate-stats :sourceByteCol 'size' :sourceTimeCol 'duration' :targetSizeCol 'total_size' :targetTimeCol 'total_time'
+
+
+🔣 Sample Input
+size	duration
+10KB	2s
+5MB	3m
+1GB	1h
+
+
+✅ Output
+A single row after aggregation:
+
+total_size	total_time
+1075841024	3662
+Note: total_size in bytes, total_time in seconds.
+
+
+📁 Project Structure Changes
+Path	Description
+Directives.g4	Added ByteSizeArg and TimeDurationArg rules
+ByteSize.java, TimeDuration.java	New token classes implementing RowValue
+RecipeSymbolBuildingVisitor.java	Added methods to handle new tokens
+AggregateStats.java	New directive to compute aggregate stats
+
+
+🔧 Build & Test
+bash
+Copy
+Edit
+# Run the full build
+mvn clean install
+
+# Test specific module
+cd wrangler-core
+mvn test
+
+
+🧠 Prompts Used (AI Tools)
+See prompts.txt for all AI-assisted questions used during development.
+
+
+
