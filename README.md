@@ -219,7 +219,7 @@ permission. No endorsement by The Apache Software Foundation is implied by the u
 
 
 
-# Below is the detailed overview of changes made by Biswaajit Kabi as part of the Software Engineer Intern Assignment.
+# Below is the detailed overview of changes made by Biswajit Kabi as part of the Software Engineer Intern Assignment.
 
 ## Wrangler Enhancement: BYTE_SIZE, TIME_DURATION Support & aggregate-stats Directive
 
